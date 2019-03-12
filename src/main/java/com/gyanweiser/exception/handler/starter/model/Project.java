@@ -3,8 +3,10 @@ package com.gyanweiser.exception.handler.starter.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -28,6 +30,8 @@ public class Project {
 	@Min(value = 1, message = "Total sprints must be greater than or equal to 1.")
 	private int totalSprints;
 
+	@Size(min = 1, message = "Atleast one story required to create a project")
+	@Valid
 	private List<Story> stories;
 
 }

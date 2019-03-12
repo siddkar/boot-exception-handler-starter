@@ -15,7 +15,6 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import lombok.Data;
 
 @Data
-@JsonInclude(content = Include.NON_NULL)
 public class ApiError {
 
 	private HttpStatus status;
@@ -23,6 +22,7 @@ public class ApiError {
 	private LocalDateTime timestamp;
 	private String message;
 	private String debugMessage;
+	@JsonInclude(Include.NON_NULL)
 	private List<ApiSubError> subErrors;
 
 	private ApiError() {

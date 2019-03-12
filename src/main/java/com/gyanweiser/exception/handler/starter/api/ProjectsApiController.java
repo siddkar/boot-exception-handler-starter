@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gyanweiser.exception.handler.starter.exception.CustomApiException;
 import com.gyanweiser.exception.handler.starter.model.Project;
 
 @RestController
@@ -17,7 +18,9 @@ import com.gyanweiser.exception.handler.starter.model.Project;
 public class ProjectsApiController {
 
 	@PostMapping
-	public ResponseEntity<Project> createProject(@Valid @RequestBody Project project) {
+	public ResponseEntity<Object> createProject(@Valid @RequestBody Project project) {
+		int i = 0;
+		if (i == 0)	throw new CustomApiException("Internal Server Error");
 		return new ResponseEntity<>(project, HttpStatus.CREATED);
 	}
 
